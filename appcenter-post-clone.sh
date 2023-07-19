@@ -1,0 +1,1 @@
+echo "MY CUSTOM POST-CLONE SCRIPT..."
