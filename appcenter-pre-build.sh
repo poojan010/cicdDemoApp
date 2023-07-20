@@ -17,8 +17,8 @@ ls $APPCENTER_SOURCE_DIRECTORY
 
 # Run Android APPDebug & APPTest
 cd $APPCENTER_SOURCE_DIRECTORY/android
-# ./gradlew assembleDebug
-# ./gradlew assembleAndroidTest
+./gradlew assembleDebug
+./gradlew assembleAndroidTest
 # $APPCENTER_SOURCE_DIRECTORY/android/gradlew assembleRelease
 
 # variables
