@@ -1,120 +1,54 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * Generated with the TypeScript template
- * https://github.com/react-native-community/react-native-template-typescript
- *
- * @format
- */
+import {StyleSheet, Text, TextInput, View} from 'react-native';
+import React, {useState} from 'react';
 
-import React, {type PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+const App = () => {
+  const [value1, setValue1] = useState('');
+  const [value2, setValue2] = useState('');
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-const Section: React.FC<
-  PropsWithChildren<{
-    title: string;
-  }>
-> = ({children, title}) => {
-  const isDarkMode = useColorScheme() === 'dark';
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
+    <View style={styles.screen}>
+      <Text style={styles.text}>Welcome User </Text>
+      <TextInput
+        keyboardType="number-pad"
+        value={value1}
+        style={styles.input}
+        onChangeText={(text: string) => setValue1(text)}
+      />
+      <TextInput
+        keyboardType="number-pad"
+        value={value2}
+        style={styles.input}
+        onChangeText={(text: string) => setValue2(text)}
+      />
+      <Text style={styles.answer}>
+        Answer : {Number(value1) + Number(value2)}
       </Text>
     </View>
   );
 };
 
-const App = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-};
+export default App;
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  screen: {
+    flex: 1,
+    marginHorizontal: 10,
+    justifyContent: 'center',
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
+  text: {
     fontSize: 18,
-    fontWeight: '400',
+    color: 'red',
+    fontWeight: 'bold',
+    textAlign: 'center',
   },
-  highlight: {
-    fontWeight: '700',
+  input: {
+    borderWidth: 1,
+    borderColor: 'black',
+    borderRadius: 5,
+    marginVertical: 10,
+  },
+  answer: {
+    fontSize: 18,
+    marginTop: 15,
   },
 });
-
-export default App;
