@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
-# Post Build Script
+# Pre Build Script
 
 set -e # Exit immediately if a command exits with a non-zero status (failure)
 
 
 echo 
 echo "**************************************************************************************************"
-echo "MY CUSTOM PRE-BUILD SCRIPT STARTS ..."
+echo "MY CUSTOM Pre-BUILD SCRIPT STARTS ..."
 echo "**************************************************************************************************"
 
 
@@ -15,13 +15,10 @@ echo "**************************************************************************
 echo "list files in APPCENTER_SOURCE_DIRECTORY"
 ls $APPCENTER_SOURCE_DIRECTORY
 
-# echo "list files in APPCENTER_OUTPUT_DIRECTORY"
-# ls $APPCENTER_OUTPUT_DIRECTORY
-
 # Run Android APPDebug & APPTest
 cd $APPCENTER_SOURCE_DIRECTORY/android
-./gradlew assembleDebug
-./gradlew assembleAndroidTest
+# ./gradlew assembleDebug
+# ./gradlew assembleAndroidTest
 # $APPCENTER_SOURCE_DIRECTORY/android/gradlew assembleRelease
 
 # variables
@@ -30,9 +27,9 @@ locale="en_US"
 appName="CI-CD-POC/cicdDemoApp-1"
 deviceSetName="CI-CD-POC/android-devices"
 testSeriesName="test-series"
-appDebugPath=$APPCENTER_SOURCE_DIRECTORY/app/build/outputs/apk/debug/app-debug.apk
-appReleasePath=$APPCENTER_SOURCE_DIRECTORY/app/build/outputs/apk/release/app-release.apk
-buildDir=$APPCENTER_SOURCE_DIRECTORY/app/build/outputs/apk/androidTest/debug
+appDebugPath=$APPCENTER_SOURCE_DIRECTORY/android/app/build/outputs/apk/debug/app-debug.apk
+appReleasePath=$APPCENTER_SOURCE_DIRECTORY/android/app/build/outputs/apk/release/app-release.apk
+buildDir=$APPCENTER_SOURCE_DIRECTORY/android/app/build/outputs/apk/androidTest/debug
 
 # Run UITest if branch is master
 if [ "$APPCENTER_BRANCH" == "dev" ];
@@ -49,5 +46,5 @@ cd ..
 
 echo 
 echo "**************************************************************************************************"
-echo "MY CUSTOM PRE-BUILD SCRIPT ENDS ..."
+echo "MY CUSTOM Pre-BUILD SCRIPT ENDS ..."
 echo "**************************************************************************************************"
