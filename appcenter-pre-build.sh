@@ -15,13 +15,13 @@ echo "**************************************************************************
 echo "list files in APPCENTER_SOURCE_DIRECTORY"
 ls $APPCENTER_SOURCE_DIRECTORY
 
-echo "list files in APPCENTER_OUTPUT_DIRECTORY"
-ls $APPCENTER_OUTPUT_DIRECTORY
+# echo "list files in APPCENTER_OUTPUT_DIRECTORY"
+# ls $APPCENTER_OUTPUT_DIRECTORY
 
 # Run Android APPDebug & APPTest
-$APPCENTER_SOURCE_DIRECTORY/gradlew assembleDebug
-$APPCENTER_SOURCE_DIRECTORY/gradlew assembleAndroidTest
-# $APPCENTER_SOURCE_DIRECTORY/gradlew assembleRelease
+$APPCENTER_SOURCE_DIRECTORY/android/gradlew assembleDebug
+$APPCENTER_SOURCE_DIRECTORY/android/gradlew assembleAndroidTest
+# $APPCENTER_SOURCE_DIRECTORY/android/gradlew assembleRelease
 
 # variables
 appCenterLoginApiToken=$APPCENTER_ACCESS_TOKEN
