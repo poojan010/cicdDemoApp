@@ -7,21 +7,20 @@ set -e # Exit immediately if a command exits with a non-zero status (failure)
 
 echo 
 echo "**************************************************************************************************"
-echo "MY CUSTOM POST-BUILD SCRIPT STARTS ..."
+echo "MY CUSTOM Post-BUILD SCRIPT STARTS ..."
 echo "**************************************************************************************************"
 
 
 # Run UITest if branch is master
 if [ "$RUN_UI_TESTS" == true ];
 then
-
     if [ -z "$APP_CENTER_CURRENT_PLATFORM" ]
     then
         echo "You need to define the APP_CENTER_CURRENT_PLATFORM variable in App Center with values android or ios"
         exit
+    else 
+        echo "APP_CENTER_CURRENT_PLATFORM defined"
     fi
-
-
     if [ "$APP_CENTER_CURRENT_PLATFORM" == "android" ]
     then
         #android
@@ -47,14 +46,11 @@ then
         appcenter test run espresso --app $appName --devices $deviceSetName --app-path $appReleasePath --test-series $testSeriesName --locale $locale --build-dir $buildDir --token $appCenterLoginApiToken;
         echo "########## $appName espresso finished ##########"
 
-
         cd ..
-
     else
         #iOS
-        
+        echo "ios platform"
     fi
-
 else
     echo "Do not run UI tests"
 fi
@@ -62,5 +58,5 @@ fi
 
 echo 
 echo "**************************************************************************************************"
-echo "MY CUSTOM POST-BUILD SCRIPT ENDS ..."
+echo "MY CUSTOM Post-BUILD SCRIPT ENDS ..."
 echo "**************************************************************************************************"
