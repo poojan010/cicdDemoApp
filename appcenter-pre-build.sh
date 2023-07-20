@@ -10,8 +10,8 @@ echo "**************************************************************************
 echo "MY CUSTOM Pre-BUILD SCRIPT STARTS ..."
 echo "**************************************************************************************************"
 
-echo "APPCENTER_TRIGGER"
-echo $APPCENTER_TRIGGER
+echo "APP_CENTER_CURRENT_PLATFORM"
+echo $APP_CENTER_CURRENT_PLATFORM
 
 
 # echo "list files in APPCENTER_SOURCE_DIRECTORY"
