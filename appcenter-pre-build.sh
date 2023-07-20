@@ -17,9 +17,9 @@ ls $APPCENTER_SOURCE_DIRECTORY
 
 # Run Android APPDebug & APPTest
 cd $APPCENTER_SOURCE_DIRECTORY/android
-./gradlew assembleDebug
+# ./gradlew assembleDebug
+./gradlew assembleRelease
 ./gradlew assembleAndroidTest
-# $APPCENTER_SOURCE_DIRECTORY/android/gradlew assembleRelease
 
 # variables
 appCenterLoginApiToken=$APPCENTER_ACCESS_TOKEN
@@ -36,7 +36,7 @@ if [ "$APPCENTER_BRANCH" == "dev" ];
 then
     # app center command espresso test
     echo "########## $appName espresso start ##########"
-    appcenter test run espresso --app $appName --devices $deviceSetName --app-path $appDebugPath --test-series $testSeriesName --locale $locale --build-dir $buildDir --token $appCenterLoginApiToken;
+    appcenter test run espresso --app $appName --devices $deviceSetName --app-path $appReleasePath --test-series $testSeriesName --locale $locale --build-dir $buildDir --token $appCenterLoginApiToken;
     echo "########## $appName espresso finished ##########"
 else
     echo "Current branch is not 'dev'"
