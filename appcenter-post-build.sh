@@ -12,7 +12,7 @@ echo "**************************************************************************
 
 
 # Run UITest if branch is master
-if [ "$APPCENTER_BRANCH" == "master" ];
+if [ "$RUN_UI_TESTS" == true ];
 then
 
     if [ -z "$APP_CENTER_CURRENT_PLATFORM" ]
@@ -53,11 +53,10 @@ then
     else
         #iOS
         
-        
     fi
 
 else
-    echo "Current branch is not 'master'"
+    echo "Do not run UI tests"
 fi
 
 

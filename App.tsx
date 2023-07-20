@@ -1,5 +1,5 @@
-import {StyleSheet, Text, TextInput, View} from 'react-native';
 import React, {useState} from 'react';
+import {StyleSheet, Text, TextInput, View} from 'react-native';
 
 const App = () => {
   const [value1, setValue1] = useState('');
