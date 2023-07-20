@@ -19,8 +19,9 @@ ls $APPCENTER_SOURCE_DIRECTORY
 # ls $APPCENTER_OUTPUT_DIRECTORY
 
 # Run Android APPDebug & APPTest
-$APPCENTER_SOURCE_DIRECTORY/android/gradlew assembleDebug
-$APPCENTER_SOURCE_DIRECTORY/android/gradlew assembleAndroidTest
+cd $APPCENTER_SOURCE_DIRECTORY/android
+gradlew assembleDebug
+gradlew assembleAndroidTest
 # $APPCENTER_SOURCE_DIRECTORY/android/gradlew assembleRelease
 
 # variables
@@ -44,7 +45,7 @@ else
     echo "Current branch is not 'dev'"
 fi
 
-
+cd ..
 
 echo 
 echo "**************************************************************************************************"
