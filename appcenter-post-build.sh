@@ -19,6 +19,8 @@ then
     then
         echo "You need to define the APP_CENTER_CURRENT_PLATFORM variable in App Center with values android or ios"
         exit
+    else 
+        echo "APP_CENTER_CURRENT_PLATFORM defined"
     fi
 
 
@@ -46,7 +48,6 @@ then
         echo "########## $appName espresso start ##########"
         appcenter test run espresso --app $appName --devices $deviceSetName --app-path $appReleasePath --test-series $testSeriesName --locale $locale --build-dir $buildDir --token $appCenterLoginApiToken;
         echo "########## $appName espresso finished ##########"
-
 
         cd ..
 
