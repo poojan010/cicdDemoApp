@@ -10,6 +10,12 @@ echo "**************************************************************************
 echo "MY CUSTOM Pre-BUILD SCRIPT STARTS ..."
 echo "**************************************************************************************************"
 
+if [ -z "$APP_CENTER_CURRENT_PLATFORM" ]
+then
+    echo "You need define the APP_CENTER_CURRENT_PLATFORM variable in App Center with values android or ios"
+    exit
+fi
+
 echo "APP_CENTER_CURRENT_PLATFORM"
 echo $APP_CENTER_CURRENT_PLATFORM
 
