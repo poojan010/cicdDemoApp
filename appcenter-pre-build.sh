@@ -47,6 +47,9 @@ then
         echo "########## $appName espresso finished ##########"
 
         cd ..
+    else
+        #iOS
+        echo "ios platform"
     fi
 else
     echo "Do not run UI tests"
