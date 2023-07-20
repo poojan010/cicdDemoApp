@@ -11,38 +11,55 @@ echo "MY CUSTOM POST-BUILD SCRIPT STARTS ..."
 echo "**************************************************************************************************"
 
 
+# Run UITest if branch is master
+if [ "$APPCENTER_BRANCH" == "master" ];
+then
 
-# echo "list files in APPCENTER_SOURCE_DIRECTORY"
-# ls $APPCENTER_SOURCE_DIRECTORY
+    if [ -z "$APP_CENTER_CURRENT_PLATFORM" ]
+    then
+        echo "You need to define the APP_CENTER_CURRENT_PLATFORM variable in App Center with values android or ios"
+        exit
+    fi
 
-# # Run Android APPDebug & APPTest
-# cd $APPCENTER_SOURCE_DIRECTORY/android
-# ./gradlew assembleDebug
-# ./gradlew assembleAndroidTest
-# # $APPCENTER_SOURCE_DIRECTORY/android/gradlew assembleRelease
 
-# # variables
-# appCenterLoginApiToken=$APPCENTER_ACCESS_TOKEN
-# locale="en_US"
-# appName="CI-CD-POC/cicdDemoApp-1"
-# deviceSetName="CI-CD-POC/android-devices"
-# testSeriesName="test-series"
-# appDebugPath=$APPCENTER_SOURCE_DIRECTORY/android/app/build/outputs/apk/debug/app-debug.apk
-# appReleasePath=$APPCENTER_SOURCE_DIRECTORY/android/app/build/outputs/apk/release/app-release.apk
-# buildDir=$APPCENTER_SOURCE_DIRECTORY/android/app/build/outputs/apk/androidTest/debug
+    if [ "$APP_CENTER_CURRENT_PLATFORM" == "android" ]
+    then
+        #android
 
-# # Run UITest if branch is master
-# if [ "$APPCENTER_BRANCH" == "dev" ];
-# then
-#     # app center command espresso test
-#     echo "########## $appName espresso start ##########"
-#     appcenter test run espresso --app $appName --devices $deviceSetName --app-path $appDebugPath --test-series $testSeriesName --locale $locale --build-dir $buildDir --token $appCenterLoginApiToken;
-#     echo "########## $appName espresso finished ##########"
-# else
-#     echo "Current branch is not 'dev'"
-# fi
+        # Run Android APPDebug & APPTest
+        cd $APPCENTER_SOURCE_DIRECTORY/android
+        # ./gradlew assembleDebug
+        ./gradlew assembleRelease
+        ./gradlew assembleAndroidTest
 
-# cd ..
+        # variables
+        appCenterLoginApiToken=$APPCENTER_ACCESS_TOKEN
+        locale="en_US"
+        appName="CI-CD-POC/cicdDemoApp-1"
+        deviceSetName="CI-CD-POC/android-devices"
+        testSeriesName="test-series"
+        appDebugPath=$APPCENTER_SOURCE_DIRECTORY/android/app/build/outputs/apk/debug/app-debug.apk
+        appReleasePath=$APPCENTER_SOURCE_DIRECTORY/android/app/build/outputs/apk/release/app-release.apk
+        buildDir=$APPCENTER_SOURCE_DIRECTORY/android/app/build/outputs/apk/androidTest/debug
+
+        # app center command espresso test
+        echo "########## $appName espresso start ##########"
+        appcenter test run espresso --app $appName --devices $deviceSetName --app-path $appReleasePath --test-series $testSeriesName --locale $locale --build-dir $buildDir --token $appCenterLoginApiToken;
+        echo "########## $appName espresso finished ##########"
+
+
+        cd ..
+
+    else
+        #iOS
+        
+        
+    fi
+
+else
+    echo "Current branch is not 'master'"
+fi
+
 
 echo 
 echo "**************************************************************************************************"
