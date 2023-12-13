@@ -64,11 +64,11 @@ jobs:
 
       - name: Generate Debug APK
         run: |
-          cd android && ./gradlew assembleDebug --no-daemon && cd ..
+          cd android && ./gradlew assembleDebug && cd ..
 
       - name: Generate Test APK
         run: |
-          cd android && ./gradlew assembleAndroidTest --no-daemon && cd ..
+          cd android && ./gradlew assembleAndroidTest && cd ..
 
       - name: Install App center globally
         run: npm install -g appcenter-cli
